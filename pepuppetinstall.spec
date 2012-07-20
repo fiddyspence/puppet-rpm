@@ -24,9 +24,9 @@ exit 0
 exit 0
 
 %files
-%defattr(-,root,root)
-%config(noreplace) /etc/puppetlabs/puppet/puppet.conf
+%defattr(600,pe-puppet,pe-puppet)
+%config(noreplace) /etc/puppetlabs/puppet/pe-puppet.conf
 /etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt
 
 %post
-sed -i s/CERTNAME/$(hostname)/ /etc/puppetlabs/puppet/puppet.conf
+sed s/CERTNAME/$(hostname)/ /etc/puppetlabs/puppet/pepuppet.conf > /etc/puppetlabs/puppet/puppet.conf
