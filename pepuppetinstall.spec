@@ -2,7 +2,7 @@ Summary: An RPM to install pe-puppet and provide a default config
 Name: pepuppetinstall
 Version: 1.0.0
 Release: 1
-License: GPL
+License: Puppetlabs Commercial Software Licence
 BuildArch: noarch
 Group: System Environment/Base
 BuildRoot: /usr/src/redhat/SOURCES/%{name}-buildroot

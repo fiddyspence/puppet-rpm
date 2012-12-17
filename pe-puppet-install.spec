@@ -2,7 +2,7 @@ Summary: An RPM to install pe-puppet and provide a default config
 Name: pepuppetinstall
 Version: 2.7.0
 Release: 1
-License: GPL
+License: Puppetlabs Commercial Software Agreement
 BuildArch: noarch
 Group: System Environment/Base
 BuildRoot: /home/fids/
