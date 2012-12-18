@@ -21,7 +21,7 @@ class install {
   }
 
   if $defaultpuppetsha != $currentpuppetshafile {
-    { '/etc/puppetlabs/puppet/puppet.conf':
+    file { '/etc/puppetlabs/puppet/puppet.conf':
       ensure  => file,
       content => template('install/puppet.conf.erb'),
     }
