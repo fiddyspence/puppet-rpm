@@ -20,14 +20,14 @@ class install {
     ensure => directory,
   }
 
-  if $defaultpuppetsha != $currentpuppetshafile {
+  if $defaultpuppetsha == $currentpuppetshafile {
     file { '/etc/puppetlabs/puppet/puppet.conf':
       ensure  => file,
       content => template('install/puppet.conf.erb'),
     }
   }
 
-  if $defaultfactsha != $currentfactsha {
+  if $defaultfactsha == $currentfactsha {
     file { '/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt':
       ensure => file,
       source => 'puppet:///modules/install/puppet_enterprise_installer.txt',
