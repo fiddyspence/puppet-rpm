@@ -1,6 +1,0 @@
-fact_stomp_port=61613
-fact_stomp_server=puppet
-fact_is_puppetagent=true
-fact_is_puppetmaster=false
-fact_is_puppetca=false
-fact_is_puppetconsole=false
