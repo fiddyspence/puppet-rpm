@@ -40,13 +40,6 @@ class install {
     }
   }
 
-  file { '/var/opt/lib/pe-puppet':
-    ensure  => absent,
-    recurse => true,
-    purge   => true,
-    force   => true,
-  }
-
   install::symlink { ['facter','gem','hiera','pe-man','puppet']: }
 
   service { 'pe-puppet':
