@@ -22,7 +22,7 @@ class install {
     ensure => directory,
   }
 
-  if ($defaultpuppetsha == $currentpuppetshafile) or ( $currentpuppetshafile == '') {
+  if ($defaultpuppetsha == $currentpuppetsha) or ( $currentpuppetsha == '') {
     file { '/etc/puppetlabs/puppet/puppet.conf':
       ensure  => file,
       content => template('install/puppet.conf.erb'),
