@@ -1,5 +1,10 @@
 class install {
 
+  $defaultpuppetsha = '0743e57d9cef7dbe89469a13b046c910cf1bdc2e'
+  $currentpuppetsha = inline_template("<%= Digest::SHA1.hexdigest File.read('/etc/puppetlabs/puppet/puppet.conf') -%>")
+  $defaultfactsha = 'b898a77b1f07f2c175c1cf089cb136de37dc18b3'
+  $currentfactsha = inline_template("<%= Digest::SHA1.hexdigest File.read('/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt')")
+
   File {
     owner  => 'root',
     group  => 'root',
@@ -15,14 +20,18 @@ class install {
     ensure => directory,
   }
 
-  file { '/etc/puppetlabs/puppet/puppet.conf':
-    ensure  => file,
-    content => template('install/puppet.conf.erb'),
+  if $defaultpuppetsha != $currentpuppetshafile {
+    file { '/etc/puppetlabs/puppet/puppet.conf':
+      ensure  => file,
+      content => template('install/puppet.conf.erb'),
+    }
   }
 
-  file { '/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt':
-    ensure => file,
-    source => 'puppet:///modules/install/puppet_enterprise_installer.txt',
+  if $defaultfactsha != $currentfactsha {
+    file { '/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt':
+      ensure => file,
+      source => 'puppet:///modules/install/puppet_enterprise_installer.txt',
+    }
   }
 
   file { '/var/opt/lib/pe-puppet':
