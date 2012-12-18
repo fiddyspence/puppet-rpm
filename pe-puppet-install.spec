@@ -50,7 +50,7 @@ file { '/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt':
   owner => 'root',
   group => 'root',
   mode => '0644',
-  content => "fact_stomp_port=61613\nfact_stomp_server=demomaster.puppet.demo\nfact_is_puppetagent=true\nfact_is_puppetmaster=false\nfact_is_puppetca=false\nfact_is_puppetconsole=false\n",
+  content => "fact_stomp_port=61613\nfact_stomp_server=puppet\nfact_is_puppetagent=true\nfact_is_puppetmaster=false\nfact_is_puppetca=false\nfact_is_puppetconsole=false\n",
 }  
 service { 'pe-puppet':
   ensure => running,
