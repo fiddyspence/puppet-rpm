@@ -15,7 +15,6 @@ class install {
     notify => Service['pe-puppet'],
   }
 
-
   file { [
     '/etc/puppetlabs/facter',
     '/etc/puppetlabs/facter/facts.d',
@@ -27,6 +26,9 @@ class install {
     file { '/etc/puppetlabs/puppet/puppet.conf':
       ensure  => file,
       content => template('install/puppet.conf.erb'),
+      owner   => 'pe-puppet',
+      group   => 'pe-puppet',
+      mode    => '0600',
     }
   }
 
@@ -34,6 +36,7 @@ class install {
     file { '/etc/puppetlabs/facter/facts.d/puppet_enterprise_installer.txt':
       ensure => file,
       source => 'puppet:///modules/install/puppet_enterprise_installer.txt',
+      mode   => '0644',
     }
   }
 
@@ -43,7 +46,6 @@ class install {
     purge   => true,
     force   => true,
   }
-
 
   install::symlink { ['facter','gem','hiera','pe-man','puppet']: }
 
