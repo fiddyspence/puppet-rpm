@@ -7,7 +7,7 @@ Source: pe-master-installer-%{version}.tar.gz
 BuildArch: noarch
 Group: System Environment/Base
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-requires: pe-ruby-libs,pe-ruby-irb,pe-rubygem-rake,pe-rubygem-activerecord,pe-augeas-libs,pe-httpd-passenger,pe-rubygem-tilt,pe-console,pe-activemq,pe-mcollective,pe-rubygem-json,pe-memcached,pe-puppet-enterprise-release,pe-ruby,pe-facter,pe-ruby-rdoc,pe-rubygem-stomp,pe-mcollective-common,pe-rubygem-activesupport,pe-ruby-shadow,pe-rubygem-hiera,pe-tanukiwrapper,pe-httpd,pe-puppet-dashboard,pe-rubygem-dalli,pe-rubygem-sinatra,pe-console-auth,pe-certificate-manager,pe-mod_ssl,pe-augeas,pe-puppet-server,pe-mcollective-client,pe-ruby-augeas,pe-ruby-ldap,pe-libevent,pe-ruby-mysql,pe-rubygems,pe-rubygem-rack,pe-puppet,pe-httpd-tools,pe-rubygem-ar-extensions,pe-live-management,pe-puppet-dashboard-baseline,pe-rubygem-hiera-puppet,pe-rubygem-stomp-doc,pe-ruby-ri,mysql-server
+requires: pe-ruby-libs,pe-ruby-irb,pe-rubygem-rake,pe-rubygem-activerecord,pe-augeas-libs,pe-httpd-passenger,pe-rubygem-tilt,pe-console,pe-activemq,pe-mcollective,pe-rubygem-json,pe-memcached,pe-puppet-enterprise-release,pe-ruby,pe-facter,pe-ruby-rdoc,pe-rubygem-stomp,pe-mcollective-common,pe-rubygem-activesupport,pe-ruby-shadow,pe-rubygem-hiera,pe-tanukiwrapper,pe-httpd,pe-puppet-dashboard,pe-rubygem-dalli,pe-rubygem-sinatra,pe-console-auth,pe-certificate-manager,pe-mod_ssl,pe-augeas,pe-puppet-server,pe-mcollective-client,pe-ruby-augeas,pe-ruby-ldap,pe-libevent,pe-ruby-mysql,pe-rubygems,pe-rubygem-rack,pe-puppet,pe-httpd-tools,pe-rubygem-ar-extensions,pe-live-management,pe-puppet-dashboard-baseline,pe-rubygem-hiera-puppet,pe-rubygem-stomp-doc,pe-ruby-ri
 
 %description
 An RPM to provide the deps for installing the pe-puppet master
