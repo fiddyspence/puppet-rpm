@@ -3,7 +3,7 @@ Name: pe-master-installer
 Version: 2.7.0
 Release: 1
 License: Puppet Labs Commercial Software License Agreement
-Source: pe-installer-%{version}.tar.gz
+Source: pe-master-installer-%{version}.tar.gz
 BuildArch: noarch
 Group: System Environment/Base
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -16,7 +16,7 @@ An RPM to provide the deps for installing the pe-puppet master
 
 /bin/rm -rf %{buildroot}
 
-%setup -q -n pe-masterinstaller-%{version}
+%setup -q -n pe-master-installer-%{version}
 
 %install
 
@@ -39,5 +39,5 @@ cp -r manifests/install.pp %{buildroot}/etc/puppetlabs/puppet/manifests/install.
 /opt/puppet/bin/puppet resource service pe-mcollective ensure=stopped
 /opt/puppet/bin/puppet resource service pe-memcached ensure=stopped
 /opt/puppet/bin/puppet resource service pe-puppet-dashboard-workers ensure=stopped
-/opt/puppet/bin/puppet apply --modulepath /etc/puppetlabs/puppet/modules:/opt/puppet/share/puppet/modules /etc/puppetlabs/puppet/manifests/masterinstall.pp
+/opt/puppet/bin/puppet apply --modulepath /etc/puppetlabs/puppet/installmodules:/opt/puppet/share/puppet/modules /etc/puppetlabs/puppet/installmanifests/masterinstall.pp
 
