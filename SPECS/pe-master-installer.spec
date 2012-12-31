@@ -20,17 +20,17 @@ An RPM to provide the deps for installing the pe-puppet master
 
 %install
 
-mkdir -p %{buildroot}/etc/puppetlabs/puppet/modules
-mkdir -p %{buildroot}/etc/puppetlabs/puppet/manifests
-cp -r modules/* %{buildroot}/etc/puppetlabs/puppet/modules
-cp -r manifests/install.pp %{buildroot}/etc/puppetlabs/puppet/manifests/install.pp
+mkdir -p %{buildroot}/etc/puppetlabs/puppet/installmodules
+mkdir -p %{buildroot}/etc/puppetlabs/puppet/installmanifests
+cp -r installmodules/* %{buildroot}/etc/puppetlabs/puppet/installmodules
+cp -r installmanifests/install.pp %{buildroot}/etc/puppetlabs/puppet/installmanifests/install.pp
 
 %clean
 
 %files
 %defattr(600,pe-puppet,pe-puppet)
-%config /etc/puppetlabs/puppet/modules
-%config /etc/puppetlabs/puppet/manifests
+%config /etc/puppetlabs/puppet/installmodules
+%config /etc/puppetlabs/puppet/installmanifests
 
 %post 
 /opt/puppet/bin/puppet resource service pe-puppet ensure=stopped
@@ -39,5 +39,10 @@ cp -r manifests/install.pp %{buildroot}/etc/puppetlabs/puppet/manifests/install.
 /opt/puppet/bin/puppet resource service pe-mcollective ensure=stopped
 /opt/puppet/bin/puppet resource service pe-memcached ensure=stopped
 /opt/puppet/bin/puppet resource service pe-puppet-dashboard-workers ensure=stopped
-/opt/puppet/bin/puppet apply --modulepath /etc/puppetlabs/puppet/installmodules:/opt/puppet/share/puppet/modules /etc/puppetlabs/puppet/installmanifests/masterinstall.pp
+
+# perform some initial setup
+/opt/puppet/bin/puppet apply --modulepath /etc/puppetlabs/puppet/installmodules:/opt/puppet/share/puppet/modules --no-report -v --exec 'class { puppet: }'
+
+#did this with a dirty exec hack in the puppet::requestmanager class to try and keep our entry point to a single class
+#/opt/puppet/bin/puppet apply --no-report --modulepath /opt/puppet/share/puppet/modules -v --exec 'class { request_manager: }'
 
