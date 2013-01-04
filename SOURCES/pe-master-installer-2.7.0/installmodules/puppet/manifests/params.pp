@@ -23,12 +23,12 @@ if $installerexists == 'false' {
       replace  => 'false',
     }
     $installerdata = {
-      dnsaltnames => $dnsaltnames,
-      dbpassword => $dbpassword,
+      dnsaltnames       => $dnsaltnames,
+      dbpassword        => $dbpassword,
       rootmysqlpassword => $rootmysqlpassword,
-      consoledbname => $consoledbname,
-      consoleuser => $consoleuser,
-      consolepassword => $consolepassword,
+      consoledbname     => $consoledbname,
+      consoleuser       => $consoleuser,
+      consolepassword   => $consolepassword,
     }
 
   } else {

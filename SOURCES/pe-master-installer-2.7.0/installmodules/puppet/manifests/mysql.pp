@@ -15,17 +15,17 @@ class puppet::mysql {
   }
 
   database_user { "${puppet::params::consoleuser}@localhost":
-    password_hash => mysql_password($puppet::params::installerdata['consolepassword'])
+    password_hash => mysql_password($puppet::params::installerdata['consolepassword']),
   }
 
   database_grant { "${puppet::params::installerdata['consoleuser']}@localhost/console":
-    privileges => ['all'] ,
+    privileges => ['all'],
   }
   database_grant { "${puppet::params::installerdata['consoleuser']}@localhost/console_auth":
-    privileges => ['all'] ,
+    privileges => ['all'],
   }
   database_grant { "${puppet::params::installerdata['consoleuser']}@localhost/console_inventory_service":
-    privileges => ['all'] ,
+    privileges => ['all'],
   }
 
 }
