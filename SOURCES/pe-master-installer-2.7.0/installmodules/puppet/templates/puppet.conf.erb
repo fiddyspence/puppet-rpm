@@ -1,0 +1,79 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @master_install   = 'y'
+  @agent_install    = 'y'
+  @console_install  = 'y'
+  @agent_server     = @fqdn
+  @agent_certname   = @fqdn
+  @master_certname  = @fqdn
+  @dns_alt_names    = @dnsaltnames
+  @host_name        = @hostname
+  @console_name     = @fqdn
+  @console_port     = 443
+  @db_name          = 'console'
+  @db_user          = @consoleuser
+  @db_password      = @consolepassword
+  @db_host_name     = 'localhost'
+#  @master_install   = ENV["q_puppetmaster_install"] == 'y' ? true : false
+#  @agent_install    = ENV["q_puppetagent_install"] == 'y' ? true : false
+#  @console_install  = ENV["q_puppet_enterpriseconsole_install"] == 'y' ? true : false
+#  @agent_server     = ENV["q_puppetagent_server"]
+#  @agent_certname   = ENV["q_puppetagent_certname"]
+#  @master_certname  = ENV["q_puppetmaster_certname"]
+#  @dns_alt_names    = ENV["q_puppetmaster_dnsaltnames"]
+#  @host_name        = ENV["PLATFORM_HOSTNAME"]
+#  @console_name     = ENV["q_puppetmaster_enterpriseconsole_hostname"]
+#  @console_port     = ENV["q_puppetmaster_enterpriseconsole_port"]
+#  @db_name          = ENV["q_puppet_enterpriseconsole_database_name"]
+#  @db_user          = ENV["q_puppet_enterpriseconsole_database_user"]
+#  @db_password      = ENV["q_puppet_enterpriseconsole_database_password"]
+#  @db_host_name     = ENV["q_puppet_enterpriseconsole_database_host"].nil? ? "localhost" : ENV["q_puppet_enterpriseconsole_database_host"]
+-%>
+[main]
+    vardir = /var/opt/lib/pe-puppet
+    logdir = /var/log/pe-puppet
+    rundir = /var/run/pe-puppet
+    modulepath = /etc/puppetlabs/puppet/modules:/opt/puppet/share/puppet/modules
+    user = pe-puppet
+    group = pe-puppet
+    archive_files = true
+    archive_file_server = <%= @agent_server %>
+
+<%- if @master_install || @console_install -%>
+[master]
+    certname = <%= @master_certname %>
+    dns_alt_names = <%= @dns_alt_names %>
+    ca_name = 'Puppet CA generated on <%= @host_name %> at <%= Time.now -%>'
+  <%- if @console_install -%>
+    facts_terminus = inventory_active_record
+    dbadapter = mysql
+    dbname = <%= @db_name %>_inventory_service
+    dbuser = <%= @db_user %>
+    dbpassword = <%= @db_password %>
+    dbserver = <%= @db_host_name %>
+  <%- end -%>
+  <%- if @master_install -%>
+    <%- if not @console_install -%>
+    facts_terminus = rest
+    inventory_server = <%= @console_name %>
+    inventory_port = 8140
+    <%- end -%>
+    reports = https
+    reporturl = https://<%= @console_name %>:<%= @console_port %>/reports/upload
+    node_terminus = exec
+    external_nodes = /etc/puppetlabs/puppet-dashboard/external_node
+  <%- else -%>
+    ca = false
+  <%- end -%>
+    ssl_client_header = SSL_CLIENT_S_DN
+    ssl_client_verify_header = SSL_CLIENT_VERIFY
+
+<%- end -%>
+[agent]
+    certname = <%= @agent_certname %>
+    server = <%= @agent_server %>
+    report = true
+    classfile = $vardir/classes.txt
+    localconfig = $vardir/localconfig
+    graph = true
+    pluginsync = true

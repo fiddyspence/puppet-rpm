@@ -1,0 +1,26 @@
+2012-10-26 Puppet Labs <support@puppetlabs.com> - 0.0.8
+* Adding stdlib dependency of 2.5.1 or greater for PE related facts.
+* (#16485) Install cron job only on PE agents
+* (#13915) Don't assume Administrator account exists
+
+2012-06-05 Puppet Labs <support@puppetlabs.com> - 0.0.7
+* (#14781) Redirect stdout to /dev/null for cronjob
+
+2012-03-27 Puppet Labs <support@puppetlabs.com> - 0.0.6
+* (#13442) Fix Puppet inspect Regression
+
+2012-03-11 Puppet Labs <support@puppetlabs.com> - 0.0.5
+* (#12357) Add windows support for puppet inspect
+
+2012-01-06 Puppet Labs <support@puppetlabs.com> - 0.0.4
+* Fix bug on Solaris cron for puppet inspect
+
+2011-11-03 Puppet Labs <support@puppetlabs.com> - 0.0.3
+* (#10434) Renaming pe_baselines to pe_compliance.
+
+2011-11-01 Puppet Labs <support@puppetlabs.com> - 0.0.2
+* (#9318) Make the parent class automatically include the agent class.
+
+2011-10-18 Puppet Labs <support@puppetlabs.com> - 0.0.1
+* (#9993)  Adding pe_ to PE modules.
+* Initial Commit

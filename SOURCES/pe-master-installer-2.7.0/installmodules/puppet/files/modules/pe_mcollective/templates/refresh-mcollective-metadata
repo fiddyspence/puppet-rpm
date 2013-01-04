@@ -1,0 +1,7 @@
+#! /bin/bash
+set -e
+set -u
+# Write to a stage file because this may be a long process
+/opt/puppet/bin/facter --puppet --yaml > /etc/puppetlabs/mcollective/facts.yaml.new
+# Atomic update of the facts mcollective is using.
+mv /etc/puppetlabs/mcollective/facts.yaml.new /etc/puppetlabs/mcollective/facts.yaml

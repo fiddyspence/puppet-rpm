@@ -1,0 +1,12 @@
+name    'puppetlabs-pe_mcollective'
+version '0.0.57'
+source 'git@github.com:puppetlabs/puppetlabs-pe_mcollective.git'
+author 'puppetlabs'
+license 'Puppet Enterprise Software License Agreement'
+summary 'MCollective Puppet Enterprise Management'
+description 'MCollective Puppet Enterprise Management'
+project_page 'https://github.com/puppetlabs/puppetlabs-pe_mcollective'
+
+## Add dependencies, if any:
+dependency 'puppetlabs/stdlib', '>= 2.5.1'
+dependency 'puppetlabs/pe_accounts', '>= 0.0.1'

@@ -1,0 +1,12 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @master_console_name  = ENV["q_puppetmaster_enterpriseconsole_hostname"]
+  @console_port         = ENV["q_puppetmaster_enterpriseconsole_port"]
+-%>
+#!/bin/bash
+set -e
+set -u
+
+ENC_BASE_URL="https://<%= @master_console_name -%>:<%= @console_port -%>/nodes"
+
+curl -k -H "Accept: text/yaml" "${ENC_BASE_URL}/${1}"

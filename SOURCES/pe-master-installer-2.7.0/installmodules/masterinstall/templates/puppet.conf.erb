@@ -1,0 +1,35 @@
+[main]
+    vardir = /var/opt/lib/pe-puppet
+    logdir = /var/log/pe-puppet
+    rundir = /var/run/pe-puppet
+    modulepath = /etc/puppetlabs/puppet/modules:/opt/puppet/share/puppet/modules
+    user = pe-puppet
+    group = pe-puppet
+    archive_files = true
+    archive_file_server = <%= @fqdn %>
+
+[master]
+    certname = <%= @fqdn %>
+    dns_alt_names = centospuppetmaster,centospuppetmaster.spence.org.uk.local,puppet,puppet.spence.org.uk.local
+    ca_name = 'Puppet CA generated on centospuppetmaster.spence.org.uk.local at Tue Dec 18 21:12:12 +0000 2012'
+    facts_terminus = inventory_active_record
+    dbadapter = mysql
+    dbname = console_inventory_service
+    dbuser = console
+    dbpassword = <%= @thedbpassword %>
+    dbserver = localhost
+    reports = https
+    reporturl = https://localhost:443/reports/upload
+    node_terminus = exec
+    external_nodes = /etc/puppetlabs/puppet-dashboard/external_node
+    ssl_client_header = SSL_CLIENT_S_DN
+    ssl_client_verify_header = SSL_CLIENT_VERIFY
+
+[agent]
+    certname = <%= fqdn %>
+    server = <%= fqdn %>
+    report = true
+    classfile = $vardir/classes.txt
+    localconfig = $vardir/localconfig
+    graph = true
+    pluginsync = true[main]

@@ -1,0 +1,10 @@
+name 'puppetlabs-request_manager'
+source 'git://github.com/puppetlabs/puppetlabs-request_manager'
+version '0.0.5'
+author 'puppetlabs'
+license 'Puppet Enterprise Software License Agreement'
+summary 'Management of Console Certificate Manager application'
+description 'Puppet module to manage the certificate manager application'
+
+dependency 'puppetlabs/auth_conf', '>= 0.0.5'
+dependency 'puppetlabs/stdlib', '>= 2.5.1'

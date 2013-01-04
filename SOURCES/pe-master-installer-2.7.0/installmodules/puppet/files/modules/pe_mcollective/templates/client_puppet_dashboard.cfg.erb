@@ -1,0 +1,30 @@
+# This file managed by Puppet <%= scope.lookupvar('::puppetversion') %>
+topicprefix     = /topic/
+main_collective = mcollective
+collectives     = mcollective
+libdir          = /opt/puppet/libexec/mcollective/
+logfile         = /var/log/pe-puppet-dashboard/mcollective_client.log
+loglevel        = info
+
+# Security Provider in active use
+securityprovider = <%= scope.lookupvar('pe_mcollective::mcollective_security_provider') %>
+# AES Security Provider Configuration
+plugin.aespe.client_private = /opt/puppet/share/puppet-dashboard/.mcollective.d/puppet-dashboard-private.pem
+plugin.aespe.client_public  = /opt/puppet/share/puppet-dashboard/.mcollective.d/puppet-dashboard-public.pem
+plugin.aespe.serializer     = yaml
+plugin.aespe.maximum_age    = 60
+# PSK Security Provider Configuration
+plugin.psk = <%= scope.lookupvar('pe_mcollective::mcollective_psk_string') %>
+
+connector = stomp
+plugin.stomp.pool.size = 1
+plugin.stomp.pool.host1 = <%= scope.lookupvar('pe_mcollective::stomp_server') %>
+plugin.stomp.pool.port1 = <%= scope.lookupvar('pe_mcollective::stomp_port') %>
+plugin.stomp.pool.user1 = <%= scope.lookupvar('pe_mcollective::stomp_user') %>
+plugin.stomp.pool.password1 = <%= scope.lookupvar('pe_mcollective::stomp_password') %>
+plugin.stomp.pool.ssl1 = <%= scope.lookupvar('pe_mcollective::mcollective_enable_stomp_ssl') %>
+plugin.stomp.base64 = true
+
+# Facts
+factsource = yaml
+plugin.yaml = /etc/puppetlabs/mcollective/facts.yaml

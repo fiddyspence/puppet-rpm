@@ -1,0 +1,170 @@
+2012-10-26 Puppet Labs <support@puppetlabs.com> 0.0.57
+* Update link from 2.5 to 2.x to avoid versioning confusion.
+* Remove spec/spec.opts, as rspec2 does not use it.
+* Update init.pp to use is_pe fact
+
+2012-09-14 Puppet Labs <support@puppetlabs.com> 0.0.56
+* remove failing `puppet cert sign` call and normalize `--generate` usage
+
+2012-09-10 Puppet Labs <support@puppetlabs.com> 0.0.55
+* Expand template for server.cfg to work with AIX
+* Add spec test for FOSS agents
+* Don't fail compilation with unexpected osfamily
+
+2012-07-10 Puppet Labs <support@puppetlabs.com> 0.0.54
+* Add protocol='SSL_TLS' to sslcontext for activemq.
+* SSL_TLS only on Suse.
+
+2012-07-09 Puppet Labs <support@puppetlabs.com> 0.0.52
+* Update activemq-wrapper to use thread pool
+
+2012-07-03 Puppet Labs <support@puppetlabs.com> 0.0.51
+* Bump version to 0.0.51, add sec fix
+
+2012-06-19 Puppet Labs <support@puppetlabs.com> 0.0.47
+* Updating plugins to match content of mcollective-plugins version pe1.2-94-gc0f90de.
+
+2012-06-08 Puppet Labs <support@puppetlabs.com> 0.0.46
+* (maint) Fix failure when fqdn is empty and improve logging
+
+2012-04-27 Puppet Labs <support@puppetlabs.com> 0.0.45
+* (#12654) Remove client.cfg from module
+* (#14228) Fully qualify lookups to remove deprecation warnings
+
+2012-04-20 Puppet Labs <support@puppetlabs.com> 0.0.44
+* (#13932) Add log rotation to solaris
+* Avoid deprecation warnings in erb templates.
+
+2012-03-24 Puppet Labs <support@puppetlabs.com> 0.0.43
+* (#13390) Update module dependency info
+
+2012-03-23 Puppet Labs <support@puppetlabs.com> 0.0.42
+* (#12210) Add the ability to cluster activemq.
+
+2012-03-23 Puppet Labs <support@puppetlabs.com> 0.0.41
+* (#12400) Improve Performance for IBM Java on SLES
+
+2012-03-13 Puppet Labs <support@puppetlabs.com> 0.0.40
+* (#12357) Make the pe_mcollective module work on windows
+
+2012-01-20 Puppet Labs <support@puppetlabs.com> 0.0.39
+* (#11088) Fully qualify $fqdn in init.pp
+
+2012-01-06 Puppet Labs <support@puppetlabs.com> 0.0.38
+* (#10961) Add ability to tune ActiveMQ heap size
+
+2011-11-11 Puppet Labs <support@puppetlabs.com> 0.0.37
+* (#10845) Remove ability to utilize default admin/pw
+
+2011-11-11 Puppet Labs <support@puppetlabs.com> 0.0.36
+* Allow console certificates to be delivered in one run regardless
+  if the console is running on the master or not.
+
+2011-11-11 Puppet Labs <support@puppetlabs.com> 0.0.35
+* (#10767) Fix selector branches to be booleans, not stringooleans.
+
+2011-11-10 Puppet Labs <support@puppetlabs.com> 0.0.34
+* (#10755) Fix console-only mcollective client certificate retrieval
+
+2011-11-10 Puppet Labs <support@puppetlabs.com> 0.0.33
+* Change puppetral DDL so title isn't optional
+* (#10734) Add broker trust store fixing ActiveMQ on SLES
+
+2011-11-10 Puppet Labs <support@puppetlabs.com> 0.0.31
+* (maint) Edit description strings of agents included in PE2
+
+2011-11-09 Puppet Labs <support@puppetlabs.com> 0.0.30
+* (#10705) Rename broker certificate
+
+2011-11-09 Puppet Labs <support@puppetlabs.com> 0.0.27
+* (#10664) Enable base64 for stomp
+
+2011-11-07 Puppet Labs <support@puppetlabs.com> 0.0.26
+* (#10600) Add mcollective_enable_stomp_ssl support
+
+2011-11-07 Puppet Labs <support@puppetlabs.com> 0.0.25
+* (#10485) Add a generalized client configuration
+
+2011-11-07 Puppet Labs <support@puppetlabs.com> 0.0.24
+* (#10578) Modify text message for triggering daemonized
+  puppetd runs with MC
+
+2011-11-03 Puppet Labs <support@puppetlabs.com> 0.0.23
+* (#10534) Add ability to switch to PSK security by setting
+  the mcollective_security_provider ENC parameter to 'psk'
+* Add a simple Rakefile to make it easier to build packages
+
+2011-11-02 Puppet Labs <support@puppetlabs.com> 0.0.21
+* (#10483) Clients' AES timeout should match that of the server
+
+2011-10-28 Puppet Labs <support@puppetlabs.com> 0.0.20
+* (#10420) New doc strings and comments
+
+2011-10-28 Puppet Labs <support@puppetlabs.com> 0.0.19
+* (#10401) Update puppetral and puppetd to the latest
+
+2011-10-28 Puppet Labs <support@puppetlabs.com> 0.0.18
+* (#10248) The activemq memory limits should be higher
+
+2011-10-24 Puppet Labs <support@puppetlabs.com> 0.0.17
+* (#10250) pe-activemq service is not enabled by default
+
+2011-10-25 Puppet Labs <support@puppetlabs.com> 0.0.16
+* (#10282) puppetral has been updated
+
+2011-10-21 Puppet Labs <support@puppetlabs.com> 0.0.15
+* (#10193) Wrong module referenced in pe_mcollective
+
+2011-10-17 Puppet Labs <support@puppetlabs.com> 0.0.14
+* (#9759) Move pass logic into installer/packaging
+
+2011-10-17 Puppet Labs <support@puppetlabs.com> 0.0.13
+* (maint) Update puppetral.rb for mcollective
+* (#10129) Ensure activemq.xml gets the generated stomp password
+
+2011-10-17 Puppet Labs <support@puppetlabs.com> 0.0.12
+* (#10123) Fix "could not find template" error for mc module
+
+2011-10-14 Puppet Labs <support@puppetlabs.com> 0.0.11
+* (#10096) Add console handling to mcollective module
+* (#10050) mcollective dir needs dashboard pubkey
+* (#9759) Move gen_password into conditional
+* (#9759) Generate stomp password for mcollective
+* (#9759) Server config should also reference vars
+
+2011-10-12 Puppet Labs <support@puppetlabs.com> 0.0.10
+* (#9643) Update puppetral to latest
+
+2011-10-10 Puppet Labs <support@puppetlabs.com> 0.0.9
+* (#9992) Fix two naming errors in the certificate generation.
+* (#9992) Rename certificates to all have a pe-internal- prefix.
+* (#9257) Make sudo -iu mco mco ping work on all platforms
+
+2011-10-04 Puppet Labs <support@puppetlabs.com> 0.0.8
+* (#9639) Fix stomp hostname regular expression
+* (#9625) Fix AES key paths in server.cfg
+* (#9626) Fix none security plugin
+* (#9643) Fix puppetral version in PE
+* (#9718) Update facts atomically for mcollective
+* (#9752) Bump replay attack prevention window to 60 seconds
+* (#9711) Remove none security plugin from PE
+* (#9694) Configure mcollective aes security for dashboard
+* (#9643) Update puppetral for PE (Not Final)
+
+2011-09-16 Puppet Labs <support@puppetlabs.com> 0.0.7
+* (#9257) Make mco command work without fully qualified path
+
+2011-08-18 Puppet Labs <support@puppetlabs.com> 0.0.6
+* (#9045) Add cron entry to refresh facter metadata
+
+2011-08-18 Puppet Labs <support@puppetlabs.com> 0.0.5
+* (#8826) Add Puppet Enterprise plugins
+
+2011-08-18 Puppet Labs <support@puppetlabs.com> 0.0.4
+* Remove dependency on mcollective module
+
+2011-08-17 Puppet Labs <support@puppetlabs.com> 0.0.3
+* Fix key management order of operations issue
+
+2011-08-17 Puppet Labs <support@puppetlabs.com> 0.0.2
+* Initial release with Puppet Enterprise 1.2

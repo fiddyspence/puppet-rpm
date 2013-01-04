@@ -1,0 +1,9 @@
+path <%= regex ? '~' : '' %> <%= real_path %>
+<% unless environment == :undef %>environment <%= [*environment].join(', ') %>
+<% end -%>
+<% unless acl_method == :undef %>method <%= [*acl_method].join(', ') %>
+<% end -%>
+auth <%= auth %>
+<% allow_a = [*allow] -%>
+<% unless allow_a.empty? %>allow <%= allow_a.join(', ') %><% end %>
+

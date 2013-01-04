@@ -1,0 +1,20 @@
+#!/opt/puppet/bin/ruby
+require 'openssl'
+require '/opt/puppet/share/puppet-dashboard/lib/puppet_https.rb'
+require 'cgi'
+raise Exception, 'requires the certname as an argument' unless ARGV[0]
+raise Exception, 'requires the puppetca as an argument' unless ARGV[1]
+cert_s = PuppetHttps.get("https://#{ARGV[1]}:8140/production/certificate/#{ARGV[0]}", 's', false)
+cert = OpenSSL::X509::Certificate.new(cert_s)
+key = OpenSSL::PKey::RSA.new(File.read("/etc/puppetlabs/puppet/ssl/public_keys/#{ARGV[0]}.pem"))
+raise "Certificate doesn't match key" unless cert.public_key.to_s == key.to_s
+File.open("/etc/puppetlabs/puppet/ssl/certs/#{ARGV[0]}.pem", 'w') do |file|
+  file.print cert_s
+end
+
+ca_cert_s = PuppetHttps.get("https://#{ARGV[1]}:8140/production/certificate/ca", 's', false)
+ca_cert = OpenSSL::X509::Certificate.new(ca_cert_s)
+raise "Certificate isn't signed by CA" unless cert.verify(ca_cert.public_key)
+File.open('/etc/puppetlabs/puppet/ssl/certs/ca.pem', 'w') do |file|
+  file.print ca_cert_s
+end

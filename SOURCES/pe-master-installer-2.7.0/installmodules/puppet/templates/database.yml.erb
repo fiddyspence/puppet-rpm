@@ -1,0 +1,28 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @db_remote        = ENV["q_puppet_enterpriseconsole_database_remote"] == 'y' ? true : false
+  @db_name          = ENV["q_puppet_enterpriseconsole_database_name"]
+  @db_user          = ENV["q_puppet_enterpriseconsole_database_user"]
+  @db_password      = ENV["q_puppet_enterpriseconsole_database_password"].gsub("'","")
+  @db_host_name     = ENV["q_puppet_enterpriseconsole_database_host"]
+  @db_port          = ENV["q_puppet_enterpriseconsole_database_port"]
+-%>
+common: &common
+    database: <%= @db_name %>
+    username: <%= @db_user %>
+    password: '<%= @db_password %>'
+<%- if @db_remote -%>
+    host: <%= @db_host_name %>
+    port: <%= @db_port %>
+<%- end -%>
+    adapter: mysql
+
+development:
+    <<: *common
+
+production:
+    <<: *common
+
+test:
+    database: <%= @db_name -%>_test
+    <<: *common

@@ -1,0 +1,32 @@
+{
+  "types": [
+
+  ],
+  "version": "0.0.2",
+  "project_page": "git@github.com:puppetlabs/puppetlabs-accounts.git",
+  "checksums": {
+    "tests/init.pp": "99be5f4f9ac38f7169391b4147d9a795",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "manifests/user.pp": "54d114b465536826183e32d443b125f4",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "README": "37ba79af835dfe980191ac791b746cc9",
+    "manifests/groups.pp": "d114c0f9a3e609a018287b5d84ff0d88",
+    "CHANGELOG": "dd3bf75b12e0f873d79ac1d8700a99f7",
+    "manifests/init.pp": "e8c97c7599a2aafe48d7fb9f5e63c311",
+    "manifests/home_dir.pp": "c03c94ebea1b336bb58c00052bd8fa89",
+    "Modulefile": "76446da794cacb1b7544bd9c7f2e01f0",
+    "manifests/manage_keys.pp": "658f120266fb896db2e78c370b4b0601"
+  },
+  "source": "git@github.com:puppetlabs/puppetlabs-accounts.git",
+  "license": "Puppet Enterprise Software License Agreement",
+  "dependencies": [
+    {
+      "version_requirement": ">= 0.0.0",
+      "name": "puppetlabs/pe_accounts"
+    }
+  ],
+  "summary": "Wrapper module for Puppet Enterprise pe_accounts",
+  "name": "puppetlabs-accounts",
+  "description": "This module wraps pe_accounts to facilitate upgrades",
+  "author": "puppetlabs"
+}

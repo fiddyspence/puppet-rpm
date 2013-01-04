@@ -1,0 +1,46 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @auth_database    = ENV["q_puppet_enterpriseconsole_auth_database_name"]
+  @auth_user        = ENV["q_puppet_enterpriseconsole_auth_database_user"]
+  @auth_password    = ENV["q_puppet_enterpriseconsole_auth_database_password"].gsub("'","")
+  @hostname         = ENV["PLATFORM_HOSTNAME"]
+  @hostname_short   = ENV["PLATFORM_HOSTNAME_SHORT"]
+  @remote           = ENV["q_puppet_enterpriseconsole_database_remote"] == 'y' ? true : false
+  @upgrade          = ENV["q_upgrade_installation"] == 'y' ? true : false
+
+  if @remote
+    if @hostname == @hostname_short
+      @hosts = [ @hostname ]
+    else
+      @hosts = [ @hostname, @hostname_short ]
+    end
+  else
+    @hosts = ['localhost']
+  end
+  if @upgrade == false
+    @console_database = ENV["q_puppet_enterpriseconsole_database_name"]
+    @console_user     = ENV["q_puppet_enterpriseconsole_database_user"]
+    @console_password = ENV["q_puppet_enterpriseconsole_database_password"].gsub("'","")
+  end
+-%>
+
+<% if @upgrade == false -%>
+  CREATE DATABASE `<%= @auth_database -%>` CHARACTER SET utf8;
+  CREATE DATABASE `<%= @console_database -%>` CHARACTER SET utf8;
+  CREATE DATABASE `<%= @console_database -%>_inventory_service` CHARACTER SET utf8;
+<% else -%>
+  CREATE DATABASE `<%= @auth_database -%>` CHARACTER SET utf8;
+<% end -%>
+
+<% @hosts.each do |host| -%>
+  <% if @upgrade == false -%>
+    GRANT ALL PRIVILEGES ON `<%= @console_database -%>`.* TO '<%= @console_user -%>'@'<%= host -%>' IDENTIFIED BY '<%= @console_password -%>';
+    GRANT ALL PRIVILEGES ON `<%= @console_database -%>_inventory_service`.* TO '<%= @console_user -%>'@'<%= host -%>' IDENTIFIED BY '<%= @console_password -%>';
+    GRANT ALL PRIVILEGES ON `<%= @console_database -%>_test`.* TO '<%= @console_user -%>'@'<%= host -%>' IDENTIFIED BY '<%= @console_password -%>';
+    GRANT ALL PRIVILEGES ON `<%= @auth_database -%>`.* TO '<%= @auth_user -%>'@'<%= host -%>' IDENTIFIED BY '<%= @auth_password -%>';
+    FLUSH PRIVILEGES;
+  <% else -%>
+    GRANT ALL PRIVILEGES ON `<%= @auth_database -%>`.* TO '<%= @auth_user -%>'@'<%= host -%>' IDENTIFIED BY '<%= @auth_password -%>';
+    FLUSH PRIVILEGES;
+  <% end -%>
+<% end -%>

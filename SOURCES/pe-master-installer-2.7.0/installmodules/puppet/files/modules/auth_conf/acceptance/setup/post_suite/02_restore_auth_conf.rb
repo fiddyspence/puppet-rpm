@@ -1,0 +1,2 @@
+
+on master, "test -f #{AUTH_CONF_BACKUP_PATH} && mv #{AUTH_CONF_BACKUP_PATH} #{AUTH_CONF_PATH}"

@@ -1,0 +1,11 @@
+2012-05-01 Puppet Labs <support@puppetlabs.com> - 0.0.4
+* Improve init.pp comments, add CHANGELOG file
+
+2011-11-03 Puppet Labs <support@puppetlabs.com> - 0.0.3
+* (#10434) Updating to reflect change in module name from pe_baselines to pe_compliance.
+
+2011-11-01 Puppet Labs <support@puppetlabs.com> - 0.0.2
+* (#9318) Include pe_baselines rather than pe_baselines::agent
+
+2011-10-18 Puppet Labs <support@puppetlabs.com> - 0.0.1
+* (#9993) Wrapper script for pe_baselines

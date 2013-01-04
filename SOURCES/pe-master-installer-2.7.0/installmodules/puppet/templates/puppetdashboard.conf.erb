@@ -1,0 +1,81 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @console_port = ENV["q_puppet_enterpriseconsole_httpd_port"]
+  @console_host = (ENV["t_puppet_enterpriseconsole_httpd_vhost"].nil? ? "*" : ENV["t_puppet_enterpriseconsole_httpd_vhost"])
+-%>
+Listen <%= @console_host -%>:<%= @console_port -%>
+
+<VirtualHost <%= @console_host -%>:<%= @console_port -%>>
+    SetEnv HOME /opt/puppet/share/puppet-dashboard
+    # SetEnv LM_DISCOVERY_TIMEOUT 4
+    # SetEnv LM_INVENTORY_RETRIES 3
+    DocumentRoot /opt/puppet/share/puppet-dashboard/public
+    ErrorLog /var/log/pe-httpd/puppetdashboard.error.log
+    TransferLog /var/log/pe-httpd/puppetdashboard.access.log
+
+    SetEnv GEM_PATH /opt/puppet/share/console-auth/vendor/rubygems
+
+    Include /etc/puppetlabs/httpd/console_apps.d/*.conf
+
+    # For report submission from masters.
+    <Location /reports/upload>
+        <Limit POST>
+            # Configuration restricts HTTP actions to POST only
+            Order allow,deny
+            # Allow from localhost
+            # Allow from localhost.localdomain
+            # Allow from 127.0.0.1
+            # Allow from example.com
+            # This can be locked down to just your puppet master if required
+            # See examples above, or http://httpd.apache.org/docs/2.2/howto/access.html
+            Allow from all
+            Satisfy any
+        </Limit>
+    </Location>
+
+    # For node definitions from masters.
+    <Location /nodes>
+        <Limit GET>
+            # Configuration restricts HTTP actions to GET only
+            Order allow,deny
+            # Allow from localhost.localdomain
+            # Allow from localhost
+            # Allow from 127.0.0.1
+            # Allow from example.com
+            # This can be locked down to just your puppet master if required
+            # See examples above, or http://httpd.apache.org/docs/2.2/howto/access.html
+            Allow from all
+            Satisfy any
+        </Limit>
+    </Location>
+
+    # Enables SSL Encryption
+    SSLEngine on
+    SSLCipherSuite ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:-LOW:-SSLv2:-EXP
+    SSLCertificateFile      /opt/puppet/share/puppet-dashboard/certs/pe-internal-dashboard.cert.pem
+    SSLCertificateKeyFile   /opt/puppet/share/puppet-dashboard/certs/pe-internal-dashboard.private_key.pem
+    SSLCertificateChainFile /opt/puppet/share/puppet-dashboard/certs/pe-internal-dashboard.ca_cert.pem
+    SSLCACertificateFile    /opt/puppet/share/puppet-dashboard/certs/pe-internal-dashboard.ca_cert.pem
+    # CRL checking should be enabled; if you have problems with Apache complaining about the CRL, disable the next line
+    SSLCARevocationFile     /opt/puppet/share/puppet-dashboard/certs/pe-internal-dashboard.ca_crl.pem
+
+    SSLVerifyClient none
+    SSLVerifyDepth  1
+    SSLOptions +StdEnvVars
+
+    # Console uses basic auth by default, but there are also example configurations for
+    # LDAP and ActiveDirectory below. To use a different authentication mechanism,
+    # edit the file, comment out the basic auth include and uncomment the desired
+    # authentication method below.
+    # Only have one auth method uncommented at any given time.
+
+    # Basic Auth
+    # Include /etc/puppetlabs/httpd/auth.d/puppetconsole_auth.basic
+
+    # LDAP Authentication
+    # Include /etc/puppetlabs/httpd/auth.d/puppetconsole_auth.ldap
+
+    # ActiveDirectory Authentication
+    # Include /etc/puppetlabs/httpd/auth.d/puppetconsole_auth.ad
+
+</VirtualHost>

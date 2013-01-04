@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "author": "puppetlabs",
+  "dependencies": [
+    {
+      "version_requirement": ">= 2.0.0",
+      "name": "puppetlabs/stdlib"
+    }
+  ],
+  "summary": "Account Management Module for PE",
+  "source": "git@github.com:puppetlabs/puppetlabs-pe_accounts.git",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-pe_accounts",
+  "description": "Account Management Module for PE",
+  "checksums": {
+    "spec/classes/pe_accounts_spec.rb": "570dcd7b30cfaf798d9a144dd2dec971",
+    "manifests/init.pp": "6e2e4990a4dd9b9507e7febda21fd7e1",
+    "acceptance/setup/pre_suite/03_setup_accounts.rb": "127ebdc16e6764244b58aedc5714efff",
+    "spec/defines/pe_accounts_user_spec.rb": "3d0a5bc79aa012d396ef49e4da2dfbc9",
+    "ext/data/pe_accounts_users_hash.yaml": "ee8c05762181574373b88d0fcffa2dad",
+    "acceptance/setup/pre_suite/02_symlink_modules.rb": "e6cf4a0e33baa9e6fd569c3becc06a47",
+    "manifests/groups.pp": "95178a141fae754ea55ea0ddc73450da",
+    "acceptance/setup/post_suite/01_cleanup.rb": "e802879349480431372ffef1d4f60da9",
+    "acceptance/readme.md": "7a7d24962f37311a24a358c63f27ce92",
+    "tests/init_with_user_resources.pp": "eb2daabefe063a72bd0a7a4b3e30263b",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "CHANGELOG": "34ede5ea90480153cd33042a7c0901bf",
+    "tests/init_yaml_users.pp": "38fe05944962eb08a69dd6404cf8c0b7",
+    "manifests/user.pp": "8c9694d3c91983299244ee75d12d5c7d",
+    "files/shell/bash_profile": "546be8ec0dfc6a62ceb331a4430f30f5",
+    "spec/README_TESTING.markdown": "8c9f6f86cfcbf08a9877007b9848d436",
+    "manifests/manage_keys.pp": "9e47a94b3e86d099bab2c3ebf698b712",
+    "files/shell/bashrc": "776e5327b6b492e2b49f84a41f6f68dd",
+    "tests/init_yaml.pp": "e30732ff88729ba65cc6b9bad9c57734",
+    "Rakefile": "4a4854123b69c07e5903fc8e85e379b0",
+    "acceptance/tests/managehome.rb": "333811a4e7a6b47e0a0115d07daaa148",
+    "spec/spec_helper.rb": "f3ea7211fbf9c297f8a39df6520168d6",
+    "Modulefile": "2d91ec7abbf4daa3e7f903300424e48e",
+    "examples/site_basic.pp": "ee5f2109bda06bc822954a1d404112c1",
+    "acceptance/tests/sshkeys.rb": "57dec9269fba0e84fc5026e33d348540",
+    "acceptance/tests/addremove.rb": "b79b6796303b9c144ecf97a913078410",
+    "acceptance/setup/pre_suite/01_install_modules.rb": "ada5b79e0734a98f8878af66e10a8be4",
+    "tests/init_yaml_groups.pp": "03470e0b8d9cb3860ebac2c4ea8ee16f",
+    "README.markdown": "c68ed26278d032aa4a97f5706bdcbede",
+    "ext/data/pe_accounts_groups_hash.yaml": "713fea9a517d39ac8d7df8d79c2d04bf",
+    "acceptance/tests/lock.rb": "f99885b6b41d726b02cee3703b8d6555",
+    "acceptance/integration.cfg": "30e6a6cf2ebd0f8899dbe7d23ac6e92e",
+    "tests/init.pp": "2d5bd901d73d50203f95f4ce70ebd81f",
+    "manifests/home_dir.pp": "6054a35cb189046ece9b3077f3a610df",
+    "lib/puppet/parser/functions/create_resources.rb": "b5a2c9bfe077b5f4bcf0dcd8e9996870",
+    "spec/classes/shared.rb": "dd610bac0ad766e336d1b0c70925e47b",
+    "manifests/data.pp": "d70afc6a77fd22b90dddf5620cfda8d8",
+    "LICENSE": "d4b700280b97c3d6649a7875b803cd26",
+    "examples/site_do_nothing.pp": "e4bae3ad605ddbf49d24ba4e53b90730",
+    "acceptance/helper.rb": "d36f16dc4f177b5b2d81680fd51bd0a8"
+  },
+  "license": "Puppet Enterprise Software License Agreement",
+  "types": [
+
+  ],
+  "name": "puppetlabs-pe_accounts"
+}

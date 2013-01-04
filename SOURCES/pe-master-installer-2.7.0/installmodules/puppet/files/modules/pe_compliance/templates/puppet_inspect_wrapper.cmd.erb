@@ -1,0 +1,4 @@
+@ECHO OFF
+SETLOCAL
+call "<%= File.join(node_installdir, "bin", "environment.bat") %>" %0 %*
+ruby -S -- puppet inspect

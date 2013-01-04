@@ -1,0 +1,86 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @inventory_port       = ENV["q_puppet_enterpriseconsole_inventory_port"]
+  @inventory_hostname   = ENV["q_puppet_enterpriseconsole_inventory_hostname"]
+  @master_hostname      = ENV["q_puppet_enterpriseconsole_master_hostname"]
+-%>
+#===[ Settings ]=========================================================
+#
+# This file is meant for storing setting information that is never
+# published or committed to a revision control system.
+#
+#---[ Values ]----------------------------------------------------------
+
+# Node name to use when contacting the puppet master.  This is the
+# CN that is used in the console's certificate.
+cn_name: 'pe-internal-dashboard'
+
+ca_crl_path: 'certs/pe-internal-dashboard.ca_crl.pem'
+
+ca_certificate_path: 'certs/pe-internal-dashboard.ca_cert.pem'
+
+certificate_path: 'certs/pe-internal-dashboard.cert.pem'
+
+private_key_path: 'certs/pe-internal-dashboard.private_key.pem'
+
+public_key_path: 'certs/pe-internal-dashboard.public_key.pem'
+
+# Port for the certificate authority.
+ca_port: 8140
+
+# Hostname of the certificate authority.
+ca_server: '<%= @master_hostname -%>'
+
+# Key length for SSL certificates
+key_length: 1024
+
+# The "inventory service" allows you to connect to a puppet master to retrieve and node facts
+enable_inventory_service: true
+
+# Hostname of the inventory server.
+inventory_server: '<%= @inventory_hostname -%>'
+
+# Port for the inventory server.
+inventory_port: <%= @inventory_port %>
+
+# This should be true to allow the console to display diffs of files
+# archived in the filebucket.
+use_file_bucket_diffs: true
+
+# Hostname of the file bucket server.
+file_bucket_server: '<%= @master_hostname -%>'
+
+# Port for the file bucket server.
+file_bucket_port: 8140
+
+# Amount of time in seconds since last report before a node is considered no longer reporting
+no_longer_reporting_cutoff: 3600
+
+# How many days of history to display on the "Daily Run Status" graph
+daily_run_history_length: 30
+use_external_node_classification: true
+
+# Uncomment the following line to set a local time zone.  Run
+# "rake time:zones:local" for the name of your local time zone.
+#time_zone: 'Pacific Time (US & Canada)'
+
+# Look at http://ruby-doc.org/core/classes/Time.html#M000298 for the strftime formatting
+datetime_format: '%Y-%m-%d %H:%M %Z'
+date_format: '%A, %B %e, %Y'
+
+# Set this to the URL of an image. The image will be scaled to 155x23 pixels.
+#custom_logo_url: 'http://www.puppetlabs.com/images/puppet-short.png'
+
+# A future version will deprecate the use of
+# "http://consoleserver.domain.com/reports" as the puppet master's reporturl.
+# Set this to 'true' once you have changed all your puppet masters to send
+# reports to "http://consoleserver.domain.com/reports/upload"
+disable_legacy_report_upload_url: false
+
+# Disables the UI and controller actions for editing nodes, classes, groups and reports.  Report submission is still allowed
+enable_read_only_mode: false
+
+# Time (24-hour) at which a new day begins for compliance reports.
+baseline_day_end: 2100
+
+#===[ fin ]============================================================="

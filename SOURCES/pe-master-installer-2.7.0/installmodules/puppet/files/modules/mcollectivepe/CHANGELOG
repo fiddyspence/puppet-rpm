@@ -1,0 +1,5 @@
+2012-05-01 Puppet Labs <support@puppetlabs.com> - 0.0.2
+* Improve wrapper module init.pp comments.
+
+2012-05-01 Puppet Labs <support@puppetlabs.com> - 0.0.1
+* Initial release

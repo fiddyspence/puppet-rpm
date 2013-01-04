@@ -1,0 +1,11 @@
+name    'puppetlabs-pe_compliance'
+version '0.0.8'
+source 'git@github.com:puppetlabs/puppetlabs-pe_compliance.git'
+author 'puppetlabs'
+license 'Puppet Enterprise Software License Agreement'
+summary 'Compliance Puppet Enterprise Management'
+description 'Compliance Puppet Enterprise Management'
+project_page 'https://github.com/puppetlabs/puppetlabs-pe_compliance'
+
+## Add dependencies, if any:
+dependency 'puppetlabs/stdlib', '>= 2.5.1'

@@ -1,0 +1,34 @@
+<%# Answer Variable => Ruby Variable Translation -%>
+<%
+  @smtp_host      = ENV["q_puppet_enterpriseconsole_smtp_host"]
+  @smtp_tls       = ENV["q_puppet_enterpriseconsole_smtp_use_tls"] == 'y' ? 'true' : 'false'
+  @smtp_port      = ENV["q_puppet_enterpriseconsole_smtp_port"]
+  @smtp_auth      = ENV["q_puppet_enterpriseconsole_smtp_user_auth"] == 'y' ? true : false
+  @hostname       = ENV["PLATFORM_HOSTNAME"]
+  if @smtp_auth
+    @smtp_user      = ENV["q_puppet_enterpriseconsole_smtp_username"]
+    @smtp_password  = ENV["q_puppet_enterpriseconsole_smtp_password"]
+    unless @smtp_password.nil?
+      @smtp_password.gsub!("'","")
+    end
+  end
+-%>
+smtp:
+  address: <%= @smtp_host %>
+  port: <%= @smtp_port %>
+  use_tls: <%= @smtp_tls %>
+<% if @smtp_auth -%>
+  username: <%= @smtp_user %>
+  password: '<%= @smtp_password %>'
+<% else -%>
+  ## Uncomment to enable SMTP authentication
+  #username:  smtp_username
+  #password:  smtp_password
+<% end -%>
+activation:
+  ## Configurable in days, 0 means infinite
+  freshness_period: 0
+password:
+  min_length: 8
+authentication:
+  console_hostname: <%= @hostname %>

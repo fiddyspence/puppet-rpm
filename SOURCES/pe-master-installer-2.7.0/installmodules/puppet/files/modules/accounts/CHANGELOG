@@ -1,0 +1,6 @@
+2012-05-01 Puppet Labs <support@puppetlabs.com> - 0.0.2
+* Improve comments in init.pp
+
+2011-10-18 Puppet Labs <support@puppetlabs.com> - 0.0.1
+* This fixes a selection of typos.
+* (#9993) PE module to have a prefix of "pe_"

@@ -1,0 +1,15 @@
+#!/opt/puppet/bin/ruby
+require 'openssl'
+require '/opt/puppet/share/puppet-dashboard/lib/puppet_https.rb'
+require 'cgi'
+raise Exception, 'requires the certname as an argument' unless ARGV[0]
+raise Exception, 'requires the puppetca as an argument' unless ARGV[1]
+key = OpenSSL::PKey::RSA.new(File.read("/etc/puppetlabs/puppet/ssl/private_keys/#{ARGV[0]}.pem"))
+
+cert_req = OpenSSL::X509::Request.new
+cert_req.version = 0
+cert_req.subject = OpenSSL::X509::Name.new([['CN', ARGV[0]]])
+cert_req.public_key = key.public_key
+cert_req.sign(key, OpenSSL::Digest::MD5.new)
+
+PuppetHttps.put("https://#{ARGV[1]}:8140/production/certificate_request/#{ARGV[0]}", 'text/plain', cert_req.to_s, false)

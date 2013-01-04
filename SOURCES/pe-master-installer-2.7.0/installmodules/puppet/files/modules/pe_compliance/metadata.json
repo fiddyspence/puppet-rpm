@@ -1,0 +1,28 @@
+{
+  "project_page": "https://github.com/puppetlabs/puppetlabs-pe_compliance",
+  "types": [
+
+  ],
+  "description": "Compliance Puppet Enterprise Management",
+  "summary": "Compliance Puppet Enterprise Management",
+  "source": "git@github.com:puppetlabs/puppetlabs-pe_compliance.git",
+  "author": "puppetlabs",
+  "name": "puppetlabs-pe_compliance",
+  "version": "0.0.8",
+  "checksums": {
+    "templates/puppet_inspect_wrapper.cmd.erb": "769671ce09a45bcb9422c51201ce4791",
+    "manifests/agent_windows.pp": "812be02b17116ae7a91262549f08cdf2",
+    "CHANGELOG": "fdc1f567b4d58767bc86ef6f7f5db801",
+    "manifests/init.pp": "ccf9742212b86ba893ec006e8f6be106",
+    "manifests/agent.pp": "d5c047bcc25797b0af64d3b72f99c5f6",
+    "Modulefile": "e515a160a0f75dcc860541f07076631c",
+    "README": "7af7468b61bbe47cfd36a78bec81b8d5"
+  },
+  "dependencies": [
+    {
+      "version_requirement": ">= 2.5.1",
+      "name": "puppetlabs/stdlib"
+    }
+  ],
+  "license": "Puppet Enterprise Software License Agreement"
+}

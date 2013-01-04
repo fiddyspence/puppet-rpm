@@ -1,0 +1,58 @@
+{
+  "project_page": "https://github.com/puppetlabs/puppetlabs-pe_mcollective",
+  "types": [
+
+  ],
+  "description": "MCollective Puppet Enterprise Management",
+  "summary": "MCollective Puppet Enterprise Management",
+  "source": "git@github.com:puppetlabs/puppetlabs-pe_mcollective.git",
+  "author": "puppetlabs",
+  "name": "puppetlabs-pe_mcollective",
+  "version": "0.0.57",
+  "checksums": {
+    "templates/server.cfg.erb": "0e6d6e39a1a92feb53158abad6be990b",
+    "templates/activemq.xml.erb": "c4cae7e774c1ffb9a76afc383de96dd4",
+    "templates/activemq-wrapper.conf.erb": "fc58ccefceb9084c739b1f421efb4415",
+    "files/plugins/util/actionpolicy.rb": "e4d6a7024ad7b28e019e7b9931eac027",
+    "files/plugins/agent/package.ddl": "bb6f46e5578a460067a9fd3b38848506",
+    "files/plugins/agent/puppetral.ddl": "1c035c0f91f7519c53fb985885947670",
+    "manifests/plugins.pp": "1cb920bed3de7f8369f269ad8d2a81fa",
+    "files/plugins/agent/puppetd.ddl": "ae0ffa7cd019217524b91ffbab53d859",
+    "spec/spec_helper.rb": "36ed730569b21cde0093a07e161ff9e5",
+    "README.markdown": "58a8dba8faaddba0f781db158031c440",
+    "files/plugins/agent/package.rb": "3771365f50ac5bd02e364d396b4ccc6c",
+    "manifests/init.pp": "7844963a713350831839aacfa1571ae5",
+    "files/plugins/security/aespe_security.rb": "c367977f4f130bb0b97b0d98330043be",
+    "files/plugins/agent/service.ddl": "d6922713cf11455dcf2eefc961d74424",
+    "tests/init.pp": "e88f09d288debe6eee14130694ece59d",
+    "Modulefile": "e48edf64230d21b513fb6aef53298897",
+    "files/plugins/application/puppetd.rb": "a667d217164bfdb8fb06874592a89611",
+    "files/plugins/application/package.rb": "1d1fb7cea9fd7a2523abbf12af37dc5a",
+    "templates/refresh-mcollective-metadata": "b816be63b8fa63a8dc0d8be2f6c90c38",
+    "templates/bashrc_custom.erb": "871929d2a97e8f9928cf5b18ac876023",
+    "manifests/metadata.pp": "934817114bb2b71038f6f7f26f27e030",
+    "files/plugins/agent/puppetral.rb": "8e0c5995d8d5a511c0485245581b14fe",
+    "spec/classes/pe_mcollective_init_spec.rb": "b5b3f7a31588ad07373d4f1e7f742017",
+    "Rakefile": "e7cd0518955ac1f95ee8e0b0e31d1ec5",
+    "manifests/posix.pp": "803f46d1e9bba8f8c8950589731869d3",
+    "files/plugins/application/service.rb": "db215ebd6c7d11fe8e677275d3a8ca5e",
+    "files/plugins/agent/service.rb": "c82e125809da98acee6240f297d0540e",
+    "files/plugins/agent/puppetd.rb": "d62a17ee2d15d19930139f6f91ed83a2",
+    "templates/client_puppet_dashboard.cfg.erb": "3135aa9cd2227ca6dc2b536533d6729a",
+    "templates/client_peadmin.cfg.erb": "f52016847f7fe23f2ec535d356c9d86a",
+    "files/plugins/security/sshkey.rb": "8fa3e9125fd917948445e3d2621d40e5",
+    "files/plugins/registration/meta.rb": "e939958bbbc0817e1779c336037e1849",
+    "CHANGELOG": "9247a5d1bb400bb90693e29eb63c3b9a"
+  },
+  "dependencies": [
+    {
+      "version_requirement": ">= 2.5.1",
+      "name": "puppetlabs/stdlib"
+    },
+    {
+      "version_requirement": ">= 0.0.1",
+      "name": "puppetlabs/pe_accounts"
+    }
+  ],
+  "license": "Puppet Enterprise Software License Agreement"
+}

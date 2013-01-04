@@ -1,0 +1,90 @@
+# Centrally managed by Puppet version <%= scope.lookupvar('::puppetversion') %>
+topicprefix     = /topic/
+main_collective = mcollective
+collectives     = mcollective
+libdir          = /opt/puppet/libexec/mcollective/
+<% if @operatingsystem == 'AIX' -%>
+logfile         = /opt/freeware/var/log/pe-mcollective/mcollective.log
+<% else -%>
+logfile         = /var/log/pe-mcollective/mcollective.log
+<% end -%>
+loglevel        = info
+<% if @operatingsystem == 'AIX' -%>
+daemonize       = 0
+<% else -%>
+daemonize       = 1
+<% end -%>
+
+identity = <%= scope.catalog.name %>
+# Plugins
+securityprovider           = <%= scope.lookupvar('pe_mcollective::mcollective_security_provider') %>
+
+# AES Security Provider Configuration
+plugin.aespe.send_pubkey   = 0
+plugin.aespe.learn_pubkeys = 0
+# Replay attack protection (The window in time in seconds to allow RPC messages)
+plugin.aespe.maximum_age   = 60
+# All client public keys must be placed in this directory.
+# The filename must match the name used on the client (e.g. ~peadmin/.mcollective.d/peadmin-public.pem)
+plugin.aespe.client_cert_dir = /etc/puppetlabs/mcollective/ssl/clients
+# Server RSA keys are used to encrypt registration messages.
+plugin.aespe.server_private  = /etc/puppetlabs/mcollective/ssl/mcollective-private.pem
+plugin.aespe.server_public   = /etc/puppetlabs/mcollective/ssl/mcollective-public.pem
+plugin.aespe.serializer      = yaml
+
+# PSK Security Provider Configuration
+plugin.psk = <%= scope.lookupvar('pe_mcollective::mcollective_psk_string') %>
+
+connector = stomp
+plugin.stomp.pool.size = 1
+plugin.stomp.pool.host1 = <%= scope.lookupvar('pe_mcollective::stomp_server') %>
+plugin.stomp.pool.port1 = <%= scope.lookupvar('pe_mcollective::stomp_port') %>
+plugin.stomp.pool.user1 = <%= scope.lookupvar('pe_mcollective::stomp_user') %>
+plugin.stomp.pool.password1 = <%= scope.lookupvar('pe_mcollective::stomp_password') %>
+plugin.stomp.pool.ssl1 = <%= scope.lookupvar('pe_mcollective::mcollective_enable_stomp_ssl') %>
+plugin.stomp.base64 = true
+
+# Facts
+factsource = yaml
+plugin.yaml = /etc/puppetlabs/mcollective/facts.yaml
+
+# Puppet Classes
+<% if @operatingsystem == 'AIX' -%>
+classesfile = /opt/freeware/var/lib/pe-puppet/classes.txt
+<% else -%>
+classesfile = /var/opt/lib/pe-puppet/classes.txt
+<% end -%>
+
+# Puppet Agent plugin configuration
+<% if @operatingsystem == 'AIX' -%>
+plugin.puppetd.puppetd   = '/opt/puppet/bin/puppet agent'
+plugin.puppetd.lockfile  = /opt/freeware/var/lib/pe-puppet/state/puppetdlock
+plugin.puppetd.statefile = /opt/freeware/var/lib/pe-puppet/state/state.yaml
+plugin.puppetd.splaytime = 120
+# Note the following two are "puppet" and not "puppetd"
+plugin.puppet.pidfile    = /opt/freeware/var/run/pe-puppet/agent.pid
+plugin.puppet.summary    = /opt/freeware/var/lib/pe-puppet/state/last_run_summary.yaml
+
+<% else -%>
+plugin.puppetd.puppetd   = /opt/puppet/sbin/puppetd
+plugin.puppetd.lockfile  = /var/opt/lib/pe-puppet/state/puppetdlock
+plugin.puppetd.statefile = /var/opt/lib/pe-puppet/state/state.yaml
+plugin.puppetd.splaytime = 120
+# Note the following two are "puppet" and not "puppetd"
+plugin.puppet.pidfile    = /var/run/pe-puppet/agent.pid
+plugin.puppet.summary    = /var/opt/lib/pe-puppet/state/last_run_summary.yaml
+
+<% end -%>
+
+# Periodcally broadcast metdata for registration purposes.
+# This registration plugin will broadcast current Facter fact values.
+registration = Meta
+# registerinterval is intentionally "long" to prevent systems from being overly
+# chatty on the message bus by default.  If you want a higher frequency, this
+# may be set to 300 (5 minutes)
+registerinterval = 14400
+
+# authorization
+rpcauthorization = 1
+rpcauthprovider = action_policy
+plugin.actionpolicy.allow_unconfigured = 1

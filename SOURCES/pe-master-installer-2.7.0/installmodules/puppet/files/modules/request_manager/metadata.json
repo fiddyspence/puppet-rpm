@@ -1,0 +1,38 @@
+{
+  "dependencies": [
+    {
+      "name": "puppetlabs/auth_conf",
+      "version_requirement": ">= 0.0.5"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 2.5.1"
+    }
+  ],
+  "license": "Puppet Enterprise Software License Agreement",
+  "types": [
+
+  ],
+  "description": "Puppet module to manage the certificate manager application",
+  "source": "git://github.com/puppetlabs/puppetlabs-request_manager",
+  "summary": "Management of Console Certificate Manager application",
+  "author": "puppetlabs",
+  "version": "0.0.5",
+  "name": "puppetlabs-request_manager",
+  "checksums": {
+    "Modulefile": "17d2c376cf916bf490cee190c3b477b5",
+    "acceptance/setup/post_suite/01_cleanup.rb": "28836f61f48fd1e4981ef59c9d8df40f",
+    "acceptance/integration.cfg": "30e6a6cf2ebd0f8899dbe7d23ac6e92e",
+    "acceptance/setup/post_suite/02_restore_auth_conf.rb": "02997ff2f9abb731c0cc77c0304c2321",
+    "manifests/init.pp": "675d2b094fe485a44e1f9b6b35df6b26",
+    "tests/init.pp": "26e375b6d74294d1cc15fcef81cf3dce",
+    "acceptance/tests/puppetmaster_auth_conf.rb": "0813d84ffc9d4ae59c71e73e2dd9e302",
+    "acceptance/setup/pre_suite/02_symlink_modules.rb": "8e05f1eb2c56a99077782bd66d03df79",
+    "acceptance/helper.rb": "001161d831fd9f3ec7bac4ba47e47e15",
+    "LICENSE": "8cf720515c4a7b5a74634d6e94c00521",
+    "acceptance/setup/pre_suite/01_install_modules.rb": "ada5b79e0734a98f8878af66e10a8be4",
+    "acceptance/readme.md": "6ed35c1a698e2bb5051e3057f2d857c8",
+    "acceptance/setup/pre_suite/03_backup_auth_conf.rb": "c6712756a3ac27cf44e407ecde4b87b9"
+  },
+  "project_page": "UNKNOWN"
+}
