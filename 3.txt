@@ -1,0 +1,22 @@
+I repackaged the installer tar.gz to only include the right rpms and then re tarblobbed it
+
+-rw-r--r-- 1 root root 9802740 Jul 24 12:50 pe-puppet-agent-installer-3.0.0-1.el6.i386.rpm
+
+Makes it manageable, and it successfully installed on my test box
+
+-rw-r--r-- 1 root root  469112 Jun 22 08:33 pe-augeas-1.0.0-3.pe.el6.i386.rpm
+-rw-r--r-- 1 root root   85372 Jun 22 08:33 pe-facter-1.7.1-2.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root   15312 Jun 22 08:33 pe-hiera-1.2.1-4.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root  192760 Jun 22 08:33 pe-libyaml-0.1.4-1.el6.i386.rpm
+-rw-r--r-- 1 root root   13312 Jun 22 08:33 pe-mcollective-2.2.4-2.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root  127604 Jun 22 08:33 pe-mcollective-common-2.2.4-2.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root 1020204 Jun 22 08:33 pe-puppet-3.2.2.pe1-1.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root   13012 Jun 22 08:33 pe-puppet-enterprise-release-3.0.0-3.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root 7849448 Jun 22 08:33 pe-ruby-1.9.3.392-4.pe.el6.i386.rpm
+-rw-r--r-- 1 root root   20940 Jun 22 08:33 pe-ruby-augeas-0.5.0-1.pe.el6.i386.rpm
+-rw-r--r-- 1 root root   75744 Jun 22 08:33 pe-rubygem-deep-merge-1.0.0-3.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root  232916 Jun 22 08:33 pe-rubygem-net-ssh-2.1.4-2.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root   42196 Jun 22 08:33 pe-ruby-ldap-0.9.12-1.pe.el6.i386.rpm
+-rw-r--r-- 1 root root   89012 Jun 22 08:33 pe-ruby-rgen-0.6.2-1.pe.el6.noarch.rpm
+-rw-r--r-- 1 root root   10956 Jun 22 08:33 pe-ruby-shadow-2.2.0-1.pe.el6.i386.rpm
+-rw-r--r-- 1 root root   48964 Jun 22 08:33 pe-ruby-stomp-1.2.9-4.pe.el6.noarch.rpm
