@@ -19,7 +19,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-root
 
 %description
 
-WorldPay installer for Puppet Enterprise Agent
+installer for Puppet Enterprise Agent
 
 
 %prep
